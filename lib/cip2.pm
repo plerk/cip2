@@ -18,6 +18,12 @@ sub import
   goto &Exporter::import;
 }
 
+=head1 FUNCTIONS
+
+=head2 run
+
+=cut
+
 sub run
 {
   my(@cmd) = @_;
@@ -26,12 +32,20 @@ sub run
   exit 2 if $?;
 }
 
+=head2 dzil
+
+=cut
+
 sub dzil
 {
   my(@cmd) = @_;
   unshift @cmd, 'dzil-wrapper';
   run @cmd;
 }
+
+=head2 Makefile_PL
+
+=cut
 
 sub Makefile_PL
 {
@@ -40,12 +54,20 @@ sub Makefile_PL
   run @cmd;
 }
 
+=head2 Build_PL
+
+=cut
+
 sub Build_PL
 {
   my(@cmd) = @_;
   unshift @cmd, $^X, 'Build.PL';
   run @cmd;
 }
+
+=head2 make
+
+=cut
 
 sub make
 {
@@ -54,6 +76,10 @@ sub make
   unshift @cmd, $make;
   run @cmd;
 }
+
+=head2 Build
+
+=cut
 
 sub Build
 {
@@ -69,12 +95,20 @@ sub Build
   run @cmd;
 }
 
+=head2 cpanm
+
+=cut
+
 sub cpanm
 {
   my(@cmd) = @_;
   unshift @cmd, 'cpanm';
   run @cmd;
 }
+
+=head2 test
+
+=cut
 
 sub test
 {
@@ -91,6 +125,10 @@ sub test
     die "no Makefile or Build";
   }
 }
+
+=head2 dzil_build
+
+=cut
 
 sub dzil_build
 {
@@ -142,6 +180,10 @@ sub dzil_build
     die "dir $dir not found";
   }
 }
+
+=head2 install_deps
+
+=cut
 
 sub install_deps
 {

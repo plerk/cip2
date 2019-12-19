@@ -2,6 +2,28 @@
 
 Next Gen CI Perl
 
+# FUNCTIONS
+
+## run
+
+## dzil
+
+## Makefile\_PL
+
+## Build\_PL
+
+## make
+
+## Build
+
+## cpanm
+
+## test
+
+## dzil\_build
+
+## install\_deps
+
 # AUTHOR
 
 Graham Ollis <plicease@cpan.org>
