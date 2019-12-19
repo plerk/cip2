@@ -82,9 +82,13 @@ sub test
   {
     make('test', 'TEST_VERBOSE=1');
   }
-  else
+  elsif(-f 'Build')
   {
     Build('test', 'verbose=1');
+  }
+  else
+  {
+    die "no Makefile or Build";
   }
 }
 
