@@ -3,9 +3,10 @@ package cip2;
 use strict;
 use warnings;
 use 5.008001;
+use Config;
 use base qw( Exporter );
 
-our @EXPORT = qw( run dzil make cpanm Makefile_PL Build_PL Build dzil_build install_deps );
+our @EXPORT = qw( run dzil make cpanm Makefile_PL Build_PL Build test dzil_build install_deps );
 
 # ABSTRACT: Next Gen CI Perl
 # VERSION
@@ -49,7 +50,7 @@ sub Build_PL
 sub make
 {
   my(@cmd) = @_;
-  my $make = $ENV{MAKE} || 'make';
+  my $make = $Config{make} || $ENV{MAKE} || 'make';
   unshift @cmd, $make;
   run @cmd;
 }
@@ -73,6 +74,18 @@ sub cpanm
   my(@cmd) = @_;
   unshift @cmd, 'cpanm';
   run @cmd;
+}
+
+sub test
+{
+  if(-f 'Makefile')
+  {
+    make('test', 'TEST_VERBOSE=1');
+  }
+  else
+  {
+    Build('test', 'verbose=1');
+  }
 }
 
 sub dzil_build

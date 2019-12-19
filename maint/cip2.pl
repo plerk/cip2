@@ -4,4 +4,4 @@ dzil_build;
 install_deps;
 Makefile_PL;
 make;
-make 'test';
+test;
